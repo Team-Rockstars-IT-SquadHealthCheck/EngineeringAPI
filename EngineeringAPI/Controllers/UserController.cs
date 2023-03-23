@@ -35,10 +35,10 @@ public class UserController
         user.Username = Convert.ToString(dataTable.Rows[0]["username"]);
         user.Password = Convert.ToString(dataTable.Rows[0]["password"]);
         user.Email = Convert.ToString(dataTable.Rows[0]["email"]);
-        user.RoleId = Convert.ToInt32(dataTable.Rows[0]["id"]);
+        user.RoleId = Convert.ToInt32(dataTable.Rows[0]["roleid"]);
         try
         {
-            user.SquadId = Convert.ToInt32(dataTable.Rows[0]["id"]);
+            user.SquadId = Convert.ToInt32(dataTable.Rows[0]["squadid"]);
 
         }
         catch (Exception e)
@@ -47,9 +47,73 @@ public class UserController
             user.SquadId = null;
         }
 
+        var roleData = GetRoleData(user.RoleId);
+        user.RoleName = roleData.Name;
+        user.RoleDescription = roleData.Description;
+
+        var squadData = GetSquadData(user.SquadId);
+        user.CompanyId = squadData.CompanyId;
+        user.SquadSurveyId = squadData.SurveyId;
+
+        var companyData = GetCompanyData(user.CompanyId);
+        user.CompanyName = companyData.Name;
+        user.CompanyAddress = companyData.Address;
+        user.CompanyPhone = companyData.PhoneNumber;
+        
         return user;
     }
+
+    [HttpGet]
+    private Role GetRoleData(int roleId)
+    {
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        var role = new Role();
+        var dataAdapter = new SqlDataAdapter("SELECT * FROM role WHERE id = " + roleId, conn);
+        var dataTable = new DataTable();
+        
+        dataAdapter.Fill(dataTable);
+        if (dataTable.Rows.Count <= 0) return role;
+        role.Id = Convert.ToInt32(dataTable.Rows[0]["id"]);
+        role.Name = Convert.ToString(dataTable.Rows[0]["name"]);
+        role.Description = Convert.ToString(dataTable.Rows[0]["description"]);
+
+        return role;
+    }
     
+    [HttpGet]
+    private Squad GetSquadData(int? squadId)
+    {
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        var squad = new Squad();
+        var dataAdapter = new SqlDataAdapter("SELECT * FROM squad WHERE id = " + squadId, conn);
+        var dataTable = new DataTable();
+        
+        dataAdapter.Fill(dataTable);
+        if (dataTable.Rows.Count <= 0) return squad;
+        squad.Id = Convert.ToInt32(dataTable.Rows[0]["id"]);
+        squad.SurveyId = Convert.ToInt32(dataTable.Rows[0]["surveyid"]);
+        squad.CompanyId = Convert.ToInt32(dataTable.Rows[0]["companyid"]);
+
+        return squad;
+    }
+    
+    [HttpGet]
+    private Company GetCompanyData(int? companyId)
+    {
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        var company = new Company();
+        var dataAdapter = new SqlDataAdapter("SELECT * FROM company WHERE id = " + companyId, conn);
+        var dataTable = new DataTable();
+        
+        dataAdapter.Fill(dataTable);
+        if (dataTable.Rows.Count <= 0) return company;
+        company.Id = Convert.ToInt32(dataTable.Rows[0]["id"]);
+        company.Name = Convert.ToString(dataTable.Rows[0]["name"]);
+        company.Address = Convert.ToString(dataTable.Rows[0]["address"]);
+        company.PhoneNumber = Convert.ToString(dataTable.Rows[0]["telephonenr"]);
+
+        return company;
+    }
     
     [HttpGet] 
     [Route("/users")] 

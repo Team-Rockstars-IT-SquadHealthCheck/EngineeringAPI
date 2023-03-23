@@ -30,4 +30,3 @@ namespace EngineeringAPI.Controllers
     }
 }
 //TODO post survey
-//TODO get userinfo by id including squad and company
