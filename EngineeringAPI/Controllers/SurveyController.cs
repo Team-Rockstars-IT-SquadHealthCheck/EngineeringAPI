@@ -2,6 +2,7 @@ using System.Data;
 using System.Data.SqlClient;
 using EngineeringAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 
 namespace EngineeringAPI.Controllers;
 
@@ -32,7 +33,7 @@ public class SurveyController
         {
             List<Question> questions = new();
             var surveyId = Convert.ToInt32(surveyDataTable.Rows[i]["id"]);
-            var questionDataAdapter = new SqlDataAdapter("SELECT * FROM question WHERE surveryid = " + surveyId, conn);
+            var questionDataAdapter = new SqlDataAdapter("SELECT * FROM question WHERE surveyid = " + surveyId, conn);
             var questionDataTable = new DataTable();
 
             questionDataAdapter.Fill(questionDataTable);
@@ -43,8 +44,8 @@ public class SurveyController
                     var question = new Question
                     {
                         Id = Convert.ToInt32(questionDataTable.Rows[i]["id"]),
-                        SurveyId = Convert.ToInt32(questionDataTable.Rows[i]["surveryid"]),
-                        Description = Convert.ToString(questionDataTable.Rows[i]["Description"]),
+                        SurveyId = Convert.ToInt32(questionDataTable.Rows[i]["surveyid"]),
+                        Description = Convert.ToString(questionDataTable.Rows[i]["description"]),
                         Title = Convert.ToString(questionDataTable.Rows[i]["question"])
                     };
                     questions.Add(question);
@@ -63,5 +64,30 @@ public class SurveyController
         
 
         return surveys;
+    }
+
+    [HttpPost]
+    [Route("/Answer")]
+    public async void PostSurvey([FromBody] List<AnswerModel> answers)
+    {
+        foreach (var answer in answers)
+        {
+            await using var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+            await using var cmd = new SqlCommand("INSERT INTO answer " +
+                                                 "(answer, comment, userid, questionid) VALUES " +
+                                                 "($1, $2, $3, $4);", conn)
+            {
+                Parameters =
+                {
+                    new SqlParameter { Value = answer.Answer },
+                    new SqlParameter { Value = answer.Comment },
+                    new SqlParameter { Value = answer.UserId },
+                    new SqlParameter { Value = answer.QuestionId }
+                }
+            };
+            var result = await cmd.ExecuteNonQueryAsync();
+            Console.WriteLine(result);
+        };
+        //TODO var result is not within using() brackets of cmd
     }
 }
