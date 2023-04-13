@@ -19,6 +19,18 @@ public class UserController
     }
 
     [HttpGet]
+    [Route("/Validate/{input}")]
+    public int Validation(string input)
+    { 
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
+        var cmd = new SqlCommand("SELECT id FROM \"user\" WHERE url = " + input, conn);
+        var result = cmd.ExecuteScalar();
+    
+        return (int)result;
+    }
+
+    [HttpGet]
     [Route("/users/{id:int}")]
     public User? User(int? id)
     {
