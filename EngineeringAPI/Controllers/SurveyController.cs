@@ -43,10 +43,10 @@ public class SurveyController
                 {
                     var question = new Question
                     {
-                        Id = Convert.ToInt32(questionDataTable.Rows[i]["id"]),
-                        SurveyId = Convert.ToInt32(questionDataTable.Rows[i]["surveyid"]),
-                        Description = Convert.ToString(questionDataTable.Rows[i]["description"]),
-                        Title = Convert.ToString(questionDataTable.Rows[i]["question"])
+                        Id = Convert.ToInt32(questionDataTable.Rows[y]["id"]),
+                        SurveyId = Convert.ToInt32(questionDataTable.Rows[y]["surveyid"]),
+                        Description = Convert.ToString(questionDataTable.Rows[y]["description"]),
+                        Title = Convert.ToString(questionDataTable.Rows[y]["question"])
                     };
                     questions.Add(question);
                 }
