@@ -25,7 +25,6 @@ public class SurveyController
         List<Survey> surveys = new();
         var surveyDataAdapter = new SqlDataAdapter("SELECT * FROM survey", conn);
         var surveyDataTable = new DataTable();
-        var questionController = new QuestionController(_configuration);
 
         surveyDataAdapter.Fill(surveyDataTable);
         if (surveyDataTable.Rows.Count <= 0) return surveys;
@@ -46,7 +45,10 @@ public class SurveyController
                         Id = Convert.ToInt32(questionDataTable.Rows[i]["id"]),
                         SurveyId = Convert.ToInt32(questionDataTable.Rows[i]["surveyid"]),
                         Description = Convert.ToString(questionDataTable.Rows[i]["description"]),
-                        Title = Convert.ToString(questionDataTable.Rows[i]["question"])
+                        Title = Convert.ToString(questionDataTable.Rows[i]["question"]),
+                        DescGood = Convert.ToString(questionDataTable.Rows[i]["desc_good"]),
+                        DescAvg = Convert.ToString(questionDataTable.Rows[i]["desc_avg"]),
+                        DescBad = Convert.ToString(questionDataTable.Rows[i]["desc_bad"])
                     };
                     questions.Add(question);
                 }
