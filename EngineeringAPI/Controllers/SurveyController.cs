@@ -47,9 +47,9 @@ public class SurveyController
                         SurveyId = Convert.ToInt32(questionDataTable.Rows[y]["surveyid"]),
                         Description = Convert.ToString(questionDataTable.Rows[y]["description"]),
                         Title = Convert.ToString(questionDataTable.Rows[y]["question"]),
-                        DescGood = Convert.ToString(questionDataTable.Rows[y]["DescGood"]),
-                        DescAvg = Convert.ToString(questionDataTable.Rows[y]["DescAvg"]),
-                        DescBad = Convert.ToString(questionDataTable.Rows[y]["DescBad"]),
+                        DescGood = Convert.ToString(questionDataTable.Rows[y]["Desc_good"]),
+                        DescAvg = Convert.ToString(questionDataTable.Rows[y]["Desc_avg"]),
+                        DescBad = Convert.ToString(questionDataTable.Rows[y]["Desc_bad"]),
                     };
                     questions.Add(question);
                 }

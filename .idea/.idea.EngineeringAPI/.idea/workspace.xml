@@ -6,28 +6,8 @@
     <projectFile profileName="https">EngineeringAPI/EngineeringAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65cf3e80-c2bf-45d5-a453-b1294653e3ba" name="Changes" comment="added descriptions to Question.cs">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources/69d72957-d970-4b8f-86d5-d171ecfbd24d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/dataSources/69d72957-d970-4b8f-86d5-d171ecfbd24d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EngineeringAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/Controllers/AnswerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/Controllers/AnswerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/Controllers/SurveyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/Controllers/SurveyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/Models/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/Models/Question.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/bin/Debug/net7.0/EngineeringAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/bin/Debug/net7.0/EngineeringAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/bin/Debug/net7.0/EngineeringAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/bin/Debug/net7.0/EngineeringAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/EngineeringAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/ref/EngineeringAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/ref/EngineeringAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/refint/EngineeringAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/Debug/net7.0/refint/EngineeringAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/EngineeringAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/EngineeringAPI.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/EngineeringAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/EngineeringAPI.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EngineeringAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/EngineeringAPI/obj/rider.project.restore.info" afterDir="false" />
+    <list default="true" id="65cf3e80-c2bf-45d5-a453-b1294653e3ba" name="Changes" comment="added descriptions">
+      <change beforePath="$PROJECT_DIR$/EngineeringAPI/Dockerfile" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +17,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/82f3bb64e8c52af0a0175218c6cd371f393f871ffe1482a2ffd51e7efaeddbb5/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bf9021a960b74107a7e141aa06bc9d8a0a53c929178c2fb95b1597be8af8dc/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/Controllers/SurveyController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/Controllers/SurveyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EngineeringAPI/Controllers/SurveyController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -48,23 +30,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlserver&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
-      &quot;TSQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "TSQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.EngineeringAPI: https">
     <configuration name="EngineeringAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EngineeringAPI/EngineeringAPI.csproj" />
@@ -126,7 +109,7 @@
       <workItem from="1680002345985" duration="773000" />
       <workItem from="1684139601723" duration="1062000" />
       <workItem from="1684141249592" duration="201000" />
-      <workItem from="1684141459181" duration="307000" />
+      <workItem from="1684141459181" duration="956000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1679568512486</created>
@@ -149,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684141764497</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added descriptions">
+      <created>1684141933932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684141933932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +163,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="moved PostSurvey function" />
     <MESSAGE value="added descriptions to Question.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="added descriptions to Question.cs" />
+    <MESSAGE value="added descriptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added descriptions" />
   </component>
 </project>
