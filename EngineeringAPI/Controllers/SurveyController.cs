@@ -22,6 +22,7 @@ public class SurveyController
     public List<Survey> GetSurveys()
     {
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
         List<Survey> surveys = new();
         var surveyDataAdapter = new SqlDataAdapter("SELECT * FROM survey", conn);
         var surveyDataTable = new DataTable();
@@ -47,9 +48,9 @@ public class SurveyController
                         SurveyId = Convert.ToInt32(questionDataTable.Rows[y]["surveyid"]),
                         Description = Convert.ToString(questionDataTable.Rows[y]["description"]),
                         Title = Convert.ToString(questionDataTable.Rows[y]["question"]),
-                        DescGood = Convert.ToString(questionDataTable.Rows[y]["Desc_good"]),
-                        DescAvg = Convert.ToString(questionDataTable.Rows[y]["Desc_avg"]),
-                        DescBad = Convert.ToString(questionDataTable.Rows[y]["Desc_bad"]),
+                        DescGood = Convert.ToString(questionDataTable.Rows[y]["desc_good"]),
+                        DescAvg = Convert.ToString(questionDataTable.Rows[y]["desc_avg"]),
+                        DescBad = Convert.ToString(questionDataTable.Rows[y]["desc_bad"]),
                     };
                     questions.Add(question);
                 }
