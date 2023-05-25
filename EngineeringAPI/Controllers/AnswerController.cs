@@ -35,8 +35,15 @@ public class AnswerController
                     new SqlParameter { Value = answer.QuestionId }
                 }
             };
-            var result = await cmd.ExecuteNonQueryAsync();
-            Console.WriteLine(result);
+            try
+            {
+                var result = await cmd.ExecuteNonQueryAsync();
+                Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         };
     }
 }

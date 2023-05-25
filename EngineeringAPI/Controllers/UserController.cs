@@ -19,15 +19,19 @@ public class UserController
     }
 
     [HttpGet]
-    [Route("/Validate/{input}")]
-    public int Validation(string input)
+    [Route("/Validate/{url}")]
+    public string? Validation(string url)
     { 
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
         conn.Open();
-        var cmd = new SqlCommand("SELECT id FROM \"user\" WHERE url = " + input, conn);
+        var cmd = new SqlCommand("SELECT id FROM \"user\" WHERE url = @url", conn);
+        cmd.Parameters.AddWithValue("@url", url);
         var result = cmd.ExecuteScalar();
-    
-        return (int)result;
+        if (result == null)
+        {
+            return 0.ToString();
+        }
+        return result.ToString();
     }
 
     [HttpGet]
@@ -37,6 +41,7 @@ public class UserController
         if (id == null || id <= 0) { return null; }
         
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
         var user = new User();
         var dataAdapter = new SqlDataAdapter("SELECT * FROM \"user\" WHERE id = " + id, conn);
         var dataTable = new DataTable();
@@ -79,6 +84,7 @@ public class UserController
     private Role GetRoleData(int roleId)
     {
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
         var role = new Role();
         var dataAdapter = new SqlDataAdapter("SELECT * FROM role WHERE id = " + roleId, conn);
         var dataTable = new DataTable();
@@ -96,6 +102,7 @@ public class UserController
     private Squad GetSquadData(int? squadId)
     {
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
         var squad = new Squad();
         var dataAdapter = new SqlDataAdapter("SELECT * FROM squad WHERE id = " + squadId, conn);
         var dataTable = new DataTable();
@@ -113,6 +120,7 @@ public class UserController
     private Company GetCompanyData(int? companyId)
     {
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();        
         var company = new Company();
         var dataAdapter = new SqlDataAdapter("SELECT * FROM company WHERE id = " + companyId, conn);
         var dataTable = new DataTable();
@@ -132,6 +140,7 @@ public class UserController
     public List<User> Users()
     {
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
         var users = new List<User>();
         var dataAdapter = new SqlDataAdapter("SELECT * FROM \"user\"", conn);
         var dataTable = new DataTable();
