@@ -22,6 +22,7 @@ public class AnswerController
         foreach (var answer in answers)
         {
             await using var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+            await conn.OpenAsync();
             await using var cmd = new SqlCommand("INSERT INTO answer " +
                                                  "(answer, comment, userid, questionid) VALUES " +
                                                  "($1, $2, $3, $4);", conn)
@@ -37,6 +38,5 @@ public class AnswerController
             var result = await cmd.ExecuteNonQueryAsync();
             Console.WriteLine(result);
         };
-        //TODO var result is not within using() brackets of cmd
     }
 }

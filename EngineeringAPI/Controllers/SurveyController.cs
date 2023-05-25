@@ -16,6 +16,53 @@ public class SurveyController
     {
         _configuration = configuration;
     }
+
+    [HttpGet]
+    [Route("/survey/{id}")]
+    public Survey GetSurveyById(string id)
+    {
+
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
+
+        List<Question> questions = new();
+        var questionDataAdapter = new SqlDataAdapter("SELECT * FROM question WHERE surveyid = " + id, conn);
+        var questionDataTable = new DataTable();
+
+        questionDataAdapter.Fill(questionDataTable);
+        if (questionDataTable.Rows.Count > 0)
+        {
+            for (var y = 0; y < questionDataTable.Rows.Count; y++)
+            {
+                var question = new Question
+                {
+                    Id = Convert.ToInt32(questionDataTable.Rows[y]["id"]),
+                    SurveyId = Convert.ToInt32(questionDataTable.Rows[y]["surveyid"]),
+                    Description = Convert.ToString(questionDataTable.Rows[y]["description"]),
+                    Title = Convert.ToString(questionDataTable.Rows[y]["question"]),
+                    DescGood = Convert.ToString(questionDataTable.Rows[y]["Desc_good"]),
+                    DescAvg = Convert.ToString(questionDataTable.Rows[y]["Desc_avg"]),
+                    DescBad = Convert.ToString(questionDataTable.Rows[y]["Desc_bad"]),
+                };
+                questions.Add(question);
+            }
+        }
+
+        var dataAdapter = new SqlDataAdapter("SELECT * FROM \"survey\" WHERE id = " + id, conn);
+        var dataTable = new DataTable();
+        dataAdapter.Fill(dataTable);
+
+        if (dataTable.Rows.Count <= 0) return new Survey();
+        var survey = new Survey
+        {
+            Id = Convert.ToInt32(dataTable.Rows[0]["id"]),
+            Name = Convert.ToString(dataTable.Rows[0]["name"]),
+            Description = Convert.ToString(dataTable.Rows[0]["description"]),
+            Questions = questions
+        };
+
+        return survey;
+    }
     
     [HttpGet]
     [Route("/surveys")]
