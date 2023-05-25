@@ -19,22 +19,18 @@ public class AnswerController
     [Route("/Answer")]
     public async void PostSurvey([FromBody] List<Answer> answers)
     {
+        await using var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        await conn.OpenAsync();
         foreach (var answer in answers)
         {
-            await using var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
-            await conn.OpenAsync();
-            await using var cmd = new SqlCommand("INSERT INTO answer " +
-                                                 "(answer, comment, userid, questionid) VALUES " +
-                                                 "($1, $2, $3, $4);", conn)
-            {
-                Parameters =
-                {
-                    new SqlParameter { Value = answer.AnswerInt },
-                    new SqlParameter { Value = answer.Comment },
-                    new SqlParameter { Value = answer.UserId },
-                    new SqlParameter { Value = answer.QuestionId }
-                }
-            };
+            var cmd = new SqlCommand("INSERT INTO answer " +
+                                     "(answer, comment, userid, questionid) VALUES " +
+                                     "(@answer, @comment, @userid, @questionid);", conn);
+            
+            cmd.Parameters.AddWithValue("@answer", answer.AnswerInt);
+            cmd.Parameters.AddWithValue("@comment", answer.Comment);
+            cmd.Parameters.AddWithValue("@userid", answer.UserId);
+            cmd.Parameters.AddWithValue("@questionid", answer.QuestionId);
             try
             {
                 var result = await cmd.ExecuteNonQueryAsync();
@@ -44,6 +40,6 @@ public class AnswerController
             {
                 Console.WriteLine(e);
             }
-        };
+        }
     }
 }
