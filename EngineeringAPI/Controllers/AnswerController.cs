@@ -14,7 +14,45 @@ public class AnswerController
     {
         _configuration = configuration;
     }
-    
+
+    [HttpGet]
+    [Route("/Answer/{url}")]
+    public List<Answer> GetAnswers(string url)
+    {
+        char[] delimiters = { '&' };
+        string[] substrings = url.Split(delimiters);
+        UrlLink urlLink = new UrlLink();
+        urlLink.SurveyNumber = Int32.Parse(substrings[0]);
+        urlLink.UUID = substrings[1];
+        urlLink.SquadID = Int32.Parse(substrings[2]);
+        urlLink.UserID = Int32.Parse(substrings[3]);
+
+        List<Answer> answers = new List<Answer>();
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
+        var cmd = new SqlCommand("Select answer.questionid, userid, answer, comment From answer inner join question on answer.questionid = question.id where question.surveyid = @surveyid and userid = @userid", conn);
+        cmd.Parameters.AddWithValue("@surveyid", urlLink.SurveyNumber);
+        cmd.Parameters.AddWithValue("@userid", urlLink.UserID);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            Answer answer = new Answer();
+            answer.QuestionId = (int)reader["questionid"];
+            answer.UserId = (int)reader["userid"];
+            answer.AnswerInt = (int)reader["answer"];
+            answer.Comment = (string)reader["comment"];
+            answers.Add(answer);
+        }
+        reader.Close();
+        var result = cmd.ExecuteScalar();
+        if (result == null)
+        {
+            return answers;
+        }
+        return answers;
+    }
+
     [HttpPost]
     [Route("/Answer")]
     public async void PostSurvey([FromBody] List<Answer> answers)
@@ -40,6 +78,27 @@ public class AnswerController
             {
                 Console.WriteLine(e);
             }
+        }
+    }
+
+    [HttpGet]
+    [Route("/StatusFilled/{url}")]
+    public int PostStatus(string url)
+    {
+        var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
+        conn.Open();
+        var cmd = new SqlCommand("Update Url Set status = 1 where url = @url", conn);
+        cmd.Parameters.AddWithValue("@url", url);
+
+        try
+        {
+            var result = cmd.ExecuteNonQuery();
+            return 1;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return 0;
         }
     }
 }

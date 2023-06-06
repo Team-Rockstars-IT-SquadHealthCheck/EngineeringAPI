@@ -20,18 +20,29 @@ public class UserController
 
     [HttpGet]
     [Route("/Validate/{url}")]
-    public string? Validation(string url)
+    public Url? Validation(string url)
     { 
+        Url urlModel = new Url();
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
         conn.Open();
-        var cmd = new SqlCommand("SELECT id FROM \"user\" WHERE url = @url", conn);
+        var cmd = new SqlCommand("SELECT * FROM url WHERE url = @url", conn);
         cmd.Parameters.AddWithValue("@url", url);
+        SqlDataReader reader = cmd.ExecuteReader();
+        if (reader.Read())
+        {
+            urlModel.Id = (int)reader["id"];
+            urlModel.url = (string)reader["url"];
+            urlModel.userid = (int)reader["userid"];
+            urlModel.status = (int)reader["status"];
+        }
+        reader.Close();
+
         var result = cmd.ExecuteScalar();
         if (result == null)
         {
-            return 0.ToString();
+            return urlModel;
         }
-        return result.ToString();
+        return urlModel;
     }
 
     [HttpGet]

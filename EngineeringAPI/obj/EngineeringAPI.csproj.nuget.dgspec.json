@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/EngineeringAPI.csproj": {}
+    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {}
   },
   "projects": {
-    "/home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/EngineeringAPI.csproj": {
+    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/EngineeringAPI.csproj",
+        "projectUniqueName": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
         "projectName": "EngineeringAPI",
-        "projectPath": "/home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/EngineeringAPI.csproj",
-        "packagesPath": "/home/maya/.nuget/packages/",
-        "outputPath": "/home/maya/RiderProjects/EngineeringAPI/EngineeringAPI/obj/",
+        "projectPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
+        "packagesPath": "C:\\Users\\tonyc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/maya/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\tonyc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,20 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.2, 7.0.2]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[7.0.2, 7.0.2]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.2, 7.0.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -92,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,5 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Policy;
 using EngineeringAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
@@ -21,49 +22,60 @@ public class SurveyController
     [Route("/survey/{id}")]
     public Survey GetSurveyById(string id)
     {
+        char[] delimiters = { '&' };
+        string[] substrings = id.Split(delimiters);
+        UrlLink urlLink = new UrlLink();
+        urlLink.SurveyNumber = Int32.Parse(substrings[0]);
+        urlLink.UUID = substrings[1];
+        urlLink.SquadID = Int32.Parse(substrings[2]);
+        urlLink.UserID = Int32.Parse(substrings[3]);
 
+        List<Question> questions = new();
+        Survey survey = new();
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
         conn.Open();
 
-        List<Question> questions = new();
-        var questionDataAdapter = new SqlDataAdapter("SELECT * FROM question WHERE surveyid = " + id, conn);
-        var questionDataTable = new DataTable();
+        var command = new SqlCommand("SELECT * FROM survey WHERE id = @id", conn);
+        command.Parameters.AddWithValue("@id", urlLink.SurveyNumber);
 
-        questionDataAdapter.Fill(questionDataTable);
-        if (questionDataTable.Rows.Count > 0)
+        SqlDataReader read = command.ExecuteReader();
+        if (read.Read())
         {
-            for (var y = 0; y < questionDataTable.Rows.Count; y++)
-            {
-                var question = new Question
-                {
-                    Id = Convert.ToInt32(questionDataTable.Rows[y]["id"]),
-                    SurveyId = Convert.ToInt32(questionDataTable.Rows[y]["surveyid"]),
-                    Description = Convert.ToString(questionDataTable.Rows[y]["description"]),
-                    Title = Convert.ToString(questionDataTable.Rows[y]["question"]),
-                    DescGood = Convert.ToString(questionDataTable.Rows[y]["Desc_good"]),
-                    DescAvg = Convert.ToString(questionDataTable.Rows[y]["Desc_avg"]),
-                    DescBad = Convert.ToString(questionDataTable.Rows[y]["Desc_bad"]),
-                };
-                questions.Add(question);
-            }
+            survey.Id = (int)read["id"];
+            survey.Name = (string)read["name"];
+            survey.Description = (string)read["description"];
         }
+        read.Close();
+        var cmd = new SqlCommand("SELECT * FROM question WHERE surveyid = @surveyid", conn);
+        cmd.Parameters.AddWithValue("@surveyid", urlLink.SurveyNumber);
 
-        var dataAdapter = new SqlDataAdapter("SELECT * FROM \"survey\" WHERE id = " + id, conn);
-        var dataTable = new DataTable();
-        dataAdapter.Fill(dataTable);
-
-        if (dataTable.Rows.Count <= 0) return new Survey();
-        var survey = new Survey
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
         {
-            Id = Convert.ToInt32(dataTable.Rows[0]["id"]),
-            Name = Convert.ToString(dataTable.Rows[0]["name"]),
-            Description = Convert.ToString(dataTable.Rows[0]["description"]),
-            Questions = questions
-        };
+            var question = new Question
+            {
+                Id = (int)reader["id"],
+                SurveyId = (int)reader["surveyid"],
+                Description = (string)reader["description"],
+                Title = (string)reader["question"],
+                DescGood = (string)reader["Desc_good"],
+                DescAvg = (string)reader["Desc_avg"],
+                DescBad = (string)reader["Desc_bad"]
+            };
 
+            questions.Add(question);
+        }
+        reader.Close();
+        survey.Questions = questions;
+
+        var result = cmd.ExecuteScalar();
+        if (result == null)
+        {
+            return survey;
+        }
         return survey;
     }
-    
+
     [HttpGet]
     [Route("/surveys")]
     public List<Survey> GetSurveys()
@@ -116,4 +128,5 @@ public class SurveyController
 
         return surveys;
     }
+
 }
