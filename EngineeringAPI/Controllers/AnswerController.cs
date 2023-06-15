@@ -85,7 +85,7 @@ public class AnswerController
 
     [HttpGet]
     [Route("/StatusFilled/{url}")]
-    public int PostStatus(string url)
+    public string PostStatus(string url)
     {
         byte[] bytes = Convert.FromBase64String(url);
         url = System.Text.Encoding.UTF8.GetString(bytes);
@@ -97,12 +97,12 @@ public class AnswerController
         try
         {
             var result = cmd.ExecuteNonQuery();
-            return 1;
+            return "1";
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return 0;
+            return "0";
         }
     }
 }
