@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net;
@@ -21,7 +22,9 @@ public class UserController
     [HttpGet]
     [Route("/Validate/{url}")]
     public Url? Validation(string url)
-    { 
+    {
+        byte[] bytes = Convert.FromBase64String(url);
+        url = System.Text.Encoding.UTF8.GetString(bytes);
         Url urlModel = new Url();
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
         conn.Open();

@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Policy;
@@ -19,11 +20,13 @@ public class SurveyController
     }
 
     [HttpGet]
-    [Route("/survey/{id}")]
-    public Survey GetSurveyById(string id)
+    [Route("/survey/{url}")]
+    public Survey GetSurveyByUrl(string url)
     {
+        byte[] bytes = Convert.FromBase64String(url);
+        url = System.Text.Encoding.UTF8.GetString(bytes);
         char[] delimiters = { '&' };
-        string[] substrings = id.Split(delimiters);
+        string[] substrings = url.Split(delimiters);
         UrlLink urlLink = new UrlLink();
         urlLink.SurveyNumber = Int32.Parse(substrings[0]);
         urlLink.UUID = substrings[1];

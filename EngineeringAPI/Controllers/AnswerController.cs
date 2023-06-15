@@ -19,6 +19,8 @@ public class AnswerController
     [Route("/Answer/{url}")]
     public List<Answer> GetAnswers(string url)
     {
+        byte[] bytes = Convert.FromBase64String(url);
+        url = System.Text.Encoding.UTF8.GetString(bytes);
         char[] delimiters = { '&' };
         string[] substrings = url.Split(delimiters);
         UrlLink urlLink = new UrlLink();
@@ -85,6 +87,8 @@ public class AnswerController
     [Route("/StatusFilled/{url}")]
     public int PostStatus(string url)
     {
+        byte[] bytes = Convert.FromBase64String(url);
+        url = System.Text.Encoding.UTF8.GetString(bytes);
         var conn = new SqlConnection(_configuration.GetConnectionString("SqlServer"));
         conn.Open();
         var cmd = new SqlCommand("Update Url Set status = 1 where url = @url", conn);
