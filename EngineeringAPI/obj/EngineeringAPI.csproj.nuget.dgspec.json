@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {}
+    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {
+    "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
+        "projectUniqueName": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
         "projectName": "EngineeringAPI",
-        "projectPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
+        "projectPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
         "packagesPath": "C:\\Users\\tonyc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\obj\\",
+        "outputPath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XoYop60R31GT2s0OM+s79T8nPIeOMUogCVy6thHoXf1IOxMLMxfq9eX366oBbcxRiS6YmgbRfF8UpOiYq/LBtA==",
+  "dgSpecHash": "+385G7kShoqVSZHTcLLh4AAgvgDCMNfhT13SBtPm8OJOA6fZw0Mad0SB4q+1ngyVGxij3NlflzGjsOwvIf3JFA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
+  "projectFilePath": "C:\\Users\\tonyc\\OneDrive\\Documents\\Fontys ict\\Semester 2\\Rockstars\\EngineeringAPI\\EngineeringAPI\\EngineeringAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tonyc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tonyc\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
